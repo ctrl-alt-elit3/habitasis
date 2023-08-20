@@ -1,14 +1,15 @@
 import csv
 import json
 
+import config
+
 class Data:
 
     def get_relative_path(path):
         return f"./data/{path}"
 
     def load_data(self):
-        with open("config.json") as config_file:
-            self.data_definitions = json.loads(config_file.read())["dataPoints"]
+        self.data_definitions = Config.get()
         self.data = {}
         for key, val in self.data_definitions.items():
             rows = []

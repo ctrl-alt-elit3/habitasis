@@ -9,8 +9,7 @@ class Scores:
         self.data_object = Data()
         self.data_object.load_data()
         self.response = {}
-        with open("config.json") as config_file:
-            self.data_definitions = json.loads(config_file.read())["dataPoints"]
+        self.data_definitions = Config.get()
         self.postcode = postcode
         self.response["breakdown"] = {}
         for key, _ in self.data_definitions.items():
