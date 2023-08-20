@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from src.data import Data
+from data import Data
 import json
 
 class Scores:
