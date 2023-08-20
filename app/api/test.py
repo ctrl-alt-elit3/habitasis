@@ -10,6 +10,7 @@ from decimal import Decimal
 from typing import Dict, List, Tuple, Union
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import json
 
 from scores import Scores
 
@@ -28,27 +29,32 @@ def get_info_api():
     scores = Scores()
     scores.calculate(postcode)
     response = scores.getResponse()
-    # {
-    #     "breakdown": {
-    #         "fuelPrice": {
-    #             "fromPostcode": 159.6,
-    #             "average": 184.68709873957664,
-    #             "weightedPostcode": 0.86,
-    #         },
-    #         "vehicleRego": {
-    #             "fromPostcode": 14316.0,
-    #             "average": 22365.727422003285,
-    #             "weightedPostcode": 0.64,
-    #         },
-    #         "rentValue": {
-    #             "fromPostcode": 76.0,
-    #             "average": 676.2095440161105,
-    #             "weightedPostcode": 0.11,
-    #         },
-    #     },
-    #     "postcode": "2040",
-    #     "score": 0.54,
-    # }
+    response = json.loads(response)
+#     response = {
+
+#   "breakdown": {
+#     "fuelPrice": {
+#       "fromPostcode": 184.69,
+#       "estimatedData": True,
+#       "average": 184.69,
+#       "weightedPostcode": 1.0
+#     },
+#     "vehicleRego": {
+#       "fromPostcode": 22365.73,
+#       "estimatedData": True,
+#       "average": 22365.73,
+#       "weightedPostcode": 1.0
+#     },
+#     "rentValue": {
+#       "fromPostcode": 676.21,
+#       "estimatedData": True,
+#       "average": 676.21,
+#       "weightedPostcode": 1.0
+#     }
+#   },
+#   "postcode": "",
+#   "score": 1.0
+# }
     # Return the JSON response object
     return jsonify(response)
 
