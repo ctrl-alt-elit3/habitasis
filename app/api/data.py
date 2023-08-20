@@ -1,22 +1,21 @@
 import csv
 import json
 
-import config
+from config import Config
+from csv_data import csv_data
+from io import StringIO
 
 class Data:
 
-    def get_relative_path(path):
-        return f"./data/{path}"
-
     def load_data(self):
-        self.data_definitions = Config.get()
+        self.data_definitions = Config.get()["dataPoints"]
         self.data = {}
         for key, val in self.data_definitions.items():
-            rows = []
-            with open(Data.get_relative_path(val["fileName"]), 'r') as csv_file:
-                reader = csv.reader(csv_file)
-                for row in reader:
-                    rows.append(row)
+            csv_file = csv_data[key]
+            reader = csv.reader(StringIO(csv_file))
+            rows = list(reader)
+            # print(rows)
+            # exit(0)
             self.data[key] = rows
 
     def get_data(self, data_file, postcode):

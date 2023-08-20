@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from data import Data
+from config import Config
 import json
 
 class Scores:
@@ -9,7 +10,7 @@ class Scores:
         self.data_object = Data()
         self.data_object.load_data()
         self.response = {}
-        self.data_definitions = Config.get()
+        self.data_definitions = Config.get()["dataPoints"]
         self.postcode = postcode
         self.response["breakdown"] = {}
         for key, _ in self.data_definitions.items():

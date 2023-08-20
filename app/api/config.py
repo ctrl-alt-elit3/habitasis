@@ -7,19 +7,19 @@ class Config:
                     "fileName": "fuel-check_june23_cleaned.csv",
                     "postcodeCol": "Postcode",
                     "valueCol": "Price",
-                    "higherIsBetter": false
+                    "higherIsBetter": False
                 },
                 "vehicleRego": {
                     "fileName": "regvehiclesJun2022.csv",
                     "postcodeCol": "Postcode",
                     "valueCol": "All Light",
-                    "higherIsBetter": false
+                    "higherIsBetter": False
                 },
                 "rentValue": {
                     "fileName": "rentsByPostcode.csv",
                     "postcodeCol": "Postcode",
                     "valueCol": "Weekly Rent",
-                    "higherIsBetter": false
+                    "higherIsBetter": False
                 }
             }
         }
