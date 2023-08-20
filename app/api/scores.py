@@ -34,7 +34,7 @@ class Scores:
         output = []
         for key, _ in self.data_definitions.items():
             output.append(self.response["breakdown"][key]["weightedPostcode"])
-        return round(sum(output) / len(output), 2)
+        return min(100, int(sum(output) / len(output) * 100))
 
     def getResponse(self):
         return json.dumps(self.response, indent=2)
