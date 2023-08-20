@@ -1,6 +1,6 @@
 # habitasis
 
-livability in numbers.
+liveability in numbers.
 
 ## Usage
 
